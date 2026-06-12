@@ -24,17 +24,31 @@ st.markdown("""
         padding-top: 0rem !important;
         padding-bottom: 2rem !important;
     }
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    /* Mantener visible el botón de control del sidebar a pesar de ocultar el header */
-    [data-testid="collapsedControl"] {
-        visibility: visible !important;
-        color: #0F238C !important;
+    /* Hacer el header transparente para que no tape el banner */
+    [data-testid="stHeader"] {
+        background: transparent !important;
+        background-color: rgba(0, 0, 0, 0) !important;
     }
-    stDecoration {display:none;}
-    [data-testid="stStatusWidget"] {visibility: hidden;}
-    div.stDeployButton {display:none;}
+    /* Ocultar los botones de deploy y menú de tres puntos (acción) a la derecha */
+    [data-testid="stHeaderActionElements"] {
+        display: none !important;
+    }
+    /* Ocultar la línea decorativa superior */
+    .stDecoration {
+        display: none !important;
+    }
+    /* Ocultar el menú principal de opciones */
+    #MainMenu {
+        visibility: hidden !important;
+    }
+    /* Ocultar el pie de página de Streamlit */
+    footer {
+        visibility: hidden !important;
+    }
+    /* Ocultar el widget de estado */
+    [data-testid="stStatusWidget"] {
+        visibility: hidden !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
