@@ -16,12 +16,22 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS institutional customization: Hide Streamlit default menus, footers, headers and indicators
+# CSS institutional customization: Hide Streamlit default branding while keeping the sidebar control functional
 st.markdown("""
     <style>
+    /* Elimina el espacio blanco superior por defecto en Streamlit */
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 2rem !important;
+    }
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    /* Mantener visible el botón de control del sidebar a pesar de ocultar el header */
+    [data-testid="collapsedControl"] {
+        visibility: visible !important;
+        color: #0F238C !important;
+    }
     stDecoration {display:none;}
     [data-testid="stStatusWidget"] {visibility: hidden;}
     div.stDeployButton {display:none;}
@@ -242,28 +252,6 @@ df_cursantes_raw, df_resumen, load_error = load_and_prepare_data(EXCEL_URL)
 
 # 7. Render Header PBA Banner & CSS Styling
 import os
-
-st.markdown(
-    """
-    <style>
-    /* Elimina el espacio blanco superior por defecto en Streamlit */
-    .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 2rem !important;
-    }
-    /* Ajusta la barra superior para permitir ver el botón de menú lateral */
-    [data-testid="stHeader"] {
-        background: transparent !important;
-        background-color: rgba(0, 0, 0, 0) !important;
-    }
-    /* Oculta los botones de deploy y menú de tres puntos */
-    [data-testid="stHeaderActionElements"] {
-        display: none !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Detect if the banner image is present (supporting double extensions like .png.jpg)
 banner_path = "banner_ministerio.png"
