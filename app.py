@@ -16,6 +16,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# CSS institutional customization: Hide Streamlit default menus, footers, headers and indicators
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    stDecoration {display:none;}
+    [data-testid="stStatusWidget"] {visibility: hidden;}
+    div.stDeployButton {display:none;}
+    </style>
+""", unsafe_allow_html=True)
+
 # 3. Google Drive Data URL (XLSX export format)
 EXCEL_URL = "https://docs.google.com/spreadsheets/d/1P_GCMT92ytE2jJt0y_HW4S8zpGYAgDSVTm2e8K4DrYE/export?format=xlsx"
 
